@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Orders - SAINT EXCHANGE Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-body">
+    <aside class="admin-sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-shield-alt"></i>
+            <span>Admin Panel</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+            <a href="orders.html" class="active"><i class="fas fa-shopping-cart"></i><span>Orders</span><span class="badge">24</span></a>
+            <a href="products.html"><i class="fas fa-box"></i><span>Products</span></a>
+            <a href="users.html"><i class="fas fa-users"></i><span>Users</span></a>
+            <a href="categories.html"><i class="fas fa-tags"></i><span>Categories</span></a>
+            <a href="reports.html"><i class="fas fa-chart-bar"></i><span>Reports</span></a>
+            <a href="settings.html"><i class="fas fa-cog"></i><span>Settings</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" id="adminLogout"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+        </div>
+    </aside>
+    
+    <main class="admin-main">
+        <header class="admin-header">
+            <button class="sidebar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+            <h1>Order Management</h1>
+            <div class="admin-profile">
+                <div class="notifications"><i class="fas fa-bell"></i><span class="notif-badge">5</span></div>
+                <div class="profile-dropdown">
+                    <img src="https://via.placeholder.com/40" alt="Admin">
+                    <span>Admin User</span>
+                </div>
+            </div>
+        </header>
+        
+        <div class="admin-content">
+            <div class="page-actions">
+                <div class="search-filter">
+                    <input type="text" placeholder="Search orders..." id="searchOrders">
+                    <select id="filterStatus">
+                        <option value="">All Status</option>
+                        <option value="pending">Pending</option>
+                        <option value="processing">Processing</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <button class="btn-export"><i class="fas fa-download"></i> Export</button>
+            </div>
+            
+            <div class="data-table-card">
+                <table class="data-table" id="ordersTable">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox"></th>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>#ORD-001</td>
+                            <td>fmlogstore</td>
+                            <td>T-Mobile refill pin $50</td>
+                            <td>₦27,000</td>
+                            <td>2024-01-15</td>
+                            <td><span class="status-badge completed">Completed</span></td>
+                            <td>
+                                <button class="btn-action view"><i class="fas fa-eye"></i></button>
+                                <button class="btn-action edit"><i class="fas fa-edit"></i></button>
+                                <button class="btn-action delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>#ORD-002</td>
+                            <td>Cleavfbee</td>
+                            <td>PIZZA (USA,CAD ONLY)</td>
+                            <td>₦25,000</td>
+                            <td>2024-01-15</td>
+                            <td><span class="status-badge processing">Processing</span></td>
+                            <td>
+                                <button class="btn-action view"><i class="fas fa-eye"></i></button>
+                                <button class="btn-action edit"><i class="fas fa-edit"></i></button>
+                                <button class="btn-action delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>#ORD-003</td>
+                            <td>Royal Logistics</td>
+                            <td>Express vpn(1month)</td>
+                            <td>₦3,000</td>
+                            <td>2024-01-14</td>
+                            <td><span class="status-badge pending">Pending</span></td>
+                            <td>
+                                <button class="btn-action view"><i class="fas fa-eye"></i></button>
+                                <button class="btn-action edit"><i class="fas fa-edit"></i></button>
+                                <button class="btn-action delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="pagination">
+                    <span>Showing 1-10 of 284 orders</span>
+                    <div class="page-buttons">
+                        <button disabled>Previous</button>
+                        <button class="active">1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Products -  SAINT EXCHANGE Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-body">
+    <aside class="admin-sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-shield-alt"></i>
+            <span>Admin Panel</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+            <a href="orders.html"><i class="fas fa-shopping-cart"></i><span>Orders</span></a>
+            <a href="products.html" class="active"><i class="fas fa-box"></i><span>Products</span></a>
+            <a href="users.html"><i class="fas fa-users"></i><span>Users</span></a>
+            <a href="categories.html"><i class="fas fa-tags"></i><span>Categories</span></a>
+            <a href="reports.html"><i class="fas fa-chart-bar"></i><span>Reports</span></a>
+            <a href="settings.html"><i class="fas fa-cog"></i><span>Settings</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" id="adminLogout"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+        </div>
+    </aside>
+    
+    <main class="admin-main">
+        <header class="admin-header">
+            <button class="sidebar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+            <h1>Product Management</h1>
+            <div class="admin-profile">
+                <div class="notifications"><i class="fas fa-bell"></i><span class="notif-badge">5</span></div>
+                <div class="profile-dropdown">
+                    <img src="https://via.placeholder.com/40" alt="Admin">
+                    <span>Admin User</span>
+                </div>
+            </div>
+        </header>
+        
+        <div class="admin-content">
+            <div class="page-actions">
+                <div class="search-filter">
+                    <input type="text" placeholder="Search products...">
+                    <select>
+                        <option>All Categories</option>
+                        <option>VPN & Proxy</option>
+                        <option>Gift Cards</option>
+                        <option>Prepaid Cards</option>
+                    </select>
+                </div>
+                <button class="btn-primary" onclick="openModal('addProductModal')">
+                    <i class="fas fa-plus"></i> Add Product
+                </button>
+            </div>
+            
+            <div class="products-grid" id="productsGrid">
+                <div class="product-card-admin">
+                    <img src="https://via.placeholder.com/200x150/667eea/ffffff?text=iTunes" alt="Product">
+                    <div class="product-info">
+                        <h4>iTunes Ecode $50</h4>
+                        <p class="price">₦27,000</p>
+                        <p class="stock">Stock: 45</p>
+                        <span class="status active">Active</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                
+                <div class="product-card-admin">
+                    <img src="https://via.placeholder.com/200x150/e91e63/ffffff?text=T-Mobile" alt="Product">
+                    <div class="product-info">
+                        <h4>T-Mobile Refill Pin</h4>
+                        <p class="price">₦25,000</p>
+                        <p class="stock">Stock: 12</p>
+                        <span class="status active">Active</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+                
+                <div class="product-card-admin">
+                    <img src="https://via.placeholder.com/200x150/00bcd4/ffffff?text=Surfshark" alt="Product">
+                    <div class="product-info">
+                        <h4>Surfshark VPN</h4>
+                        <p class="price">₦5,000</p>
+                        <p class="stock low">Stock: 3</p>
+                        <span class="status active">Active</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                        <button class="btn-icon delete"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Add Product Modal -->
+    <div class="modal" id="addProductModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Product</h3>
+                <button class="close-modal" onclick="closeModal('addProductModal')">&times;</button>
+            </div>
+            <form class="modal-form">
+                <div class="form-group">
+                    <label>Product Name</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Price (₦)</label>
+                        <input type="number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Stock</label>
+                        <input type="number" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select required>
+                        <option>VPN & Proxy</option>
+                        <option>Gift Cards</option>
+                        <option>Prepaid Cards</option>
+                        <option>Fast Delivery</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Product Image</label>
+                    <input type="file" accept="image/*">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('addProductModal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Add Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="js/admin.js"></script>
+</body>
+</html>

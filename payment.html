@@ -1,0 +1,213 @@
+
+
+# Create payment.html with bank transfer option
+payment_html = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Bank Transfer -  SAINT EXCHANGE</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/payment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-top">
+            <div class="logo">
+                <h1> SAINT EXCHANGE <span class="verified"><i class="fas fa-check-circle"></i></span></h1>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-login">Login</a>
+                <a href="register.html" class="btn btn-register">Register</a>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#friendly-deals">Friendly Deals</a></li>
+                <li><a href="index.html#gifts">Gifts</a></li>
+                <li><a href="index.html#vpn-proxy">Vpn and Proxy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Payment Section -->
+    <main class="payment-page">
+        <div class="payment-container">
+            <h1><i class="fas fa-university"></i> Bank Transfer Payment</h1>
+            
+            <!-- Order Summary -->
+            <div class="order-summary-card">
+                <h3>Order Summary</h3>
+                <div class="order-item">
+                    <span>Fresh Flower (USA & CANADA)</span>
+                    <span>₦50,000</span>
+                </div>
+                <div class="order-item">
+                    <span>Customization Fee</span>
+                    <span>₦10,000</span>
+                </div>
+                <div class="order-total">
+                    <span>Total Amount to Pay:</span>
+                    <span class="total-amount">₦60,000.00</span>
+                </div>
+            </div>
+
+            <!-- Bank Transfer Options -->
+            <div class="payment-methods">
+                <h3>Select Bank Account</h3>
+                
+               
+
+                <div class="bank-option" onclick="selectBank('OPAY')">
+                    <input type="radio" name="bank" id="opay" value="opay">
+                    <label for="opay">
+                        <div class="bank-logo">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <div class="bank-details">
+                            <h4>OPAY</h4>
+                            <p class="account-number">7032618440</p>
+                            <p class="account-name">FRANCIS CHIDIEBERE UZUEGBUNAM</p>
+                        </div>
+                        <i class="fas fa-check-circle check-icon"></i>
+                    </label>
+                </div>
+
+                <div class="bank-option" onclick="selectBank('fidelity')">
+                    <input type="radio" name="bank" id="fidelitybank" value="fidelity">
+                    <label for="fidelitybank">
+                        <div class="bank-logo">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <div class="bank-details">
+                            <h4>Fidelity Bank</h4>
+                            <p class="account-number">6554949975</p>
+                            <p class="account-name">FRANCIS CHIDIEBERE UZUEGBUNAM</p>
+                        </div>
+                        <i class="fas fa-check-circle check-icon"></i>
+                    </label>
+                </div>
+
+                <div class="bank-option" onclick="selectBank('uba')">
+                    <input type="radio" name="bank" id="uba" value="uba">
+                    <label for="uba">
+                        <div class="bank-logo">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <div class="bank-details">
+                            <h4>United Bank for Africa (UBA)</h4>
+                            <p class="account-number">2200970673</p>
+                            <p class="account-name">NNANNA MIRACLE EBUBE</p>
+                        </div>
+                        <i class="fas fa-check-circle check-icon"></i>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Upload Proof of Payment -->
+            <div class="upload-section">
+                <h3>Upload Proof of Payment</h3>
+                <p class="upload-info">Please upload a screenshot or photo of your bank transfer receipt</p>
+                
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="paymentProof" accept="image/*,.pdf" hidden>
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Click to upload or drag and drop</p>
+                    <span>Supported: JPG, PNG, PDF (Max 5MB)</span>
+                </div>
+                
+                <div class="file-preview" id="filePreview" style="display: none;">
+                    <img src="" alt="Preview" id="previewImage">
+                    <div class="file-info">
+                        <p id="fileName"></p>
+                        <button type="button" onclick="removeFile()" class="btn-remove">
+                            <i class="fas fa-trash"></i> Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sender's Bank Details -->
+            <div class="sender-details">
+                <h3>Your Bank Details</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Bank Name *</label>
+                        <input type="text" id="senderBank" placeholder="e.g., GTBank" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Account Number *</label>
+                        <input type="text" id="senderAccount" placeholder="10 digit number" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Account Name *</label>
+                        <input type="text" id="senderName" placeholder="Name on your account" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Amount Paid *</label>
+                        <input type="number" id="amountPaid" placeholder="₦60,000" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Transaction Reference (Optional)</label>
+                    <input type="text" id="transactionRef" placeholder="Bank transfer reference number">
+                </div>
+                <div class="form-group">
+                    <label>Date of Transfer *</label>
+                    <input type="date" id="transferDate" required>
+                </div>
+            </div>
+
+            <!-- WhatsApp Notification -->
+            <div class="whatsapp-notify">
+                <label class="checkbox">
+                    <input type="checkbox" checked>
+                    <span><i class="fab fa-whatsapp"></i> Send me payment confirmation via WhatsApp</span>
+                </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-confirm-payment" id="confirmPayment">
+                <i class="fas fa-check-circle"></i> Confirm Payment
+            </button>
+
+            <!-- Support Info -->
+            <div class="support-info">
+                <p><i class="fas fa-headset"></i> Need help? Contact us:</p>
+                <div class="support-links">
+                    <a href="https://wa.me/2347032618440" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="tel:+2348101011066">
+                        <i class="fas fa-phone"></i> Call Us
+                    </a>
+                    <a href="francisuzuegbu65@gmail.com">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-links">
+            <a href="#">My Wallet</a>
+            <a href="#">Order History</a>
+            <a href="#">About Us</a>
+            <a href="#">Terms of use</a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Saint Exchange, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/payment.js"></script>
+</body>
+</html>'''
+
