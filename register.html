@@ -67,6 +67,21 @@
             <p>Get access to premium digital products and gift cards</p>
         </div>
     </div>
+
+    // When registration API returns success
+function onRegisterSuccess(userData) {
+    // Store user data in localStorage
+    localStorage.setItem('saintUser', JSON.stringify({
+        name: userData.name,
+        email: userData.email,
+        isLoggedIn: true,
+        timestamp: new Date().getTime()
+    }));
+    
+    // Show success message then redirect
+    alert('Success! Redirecting...');
+    window.location.href = 'index.html';
+}
     
     <script src="js/auth.js"></script>
 </body>
