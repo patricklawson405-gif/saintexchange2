@@ -276,6 +276,40 @@
         <button class="chat-btn"><i class="fas fa-comment"></i></button>
     </div>
 
+    // auth-check.js - Include this on every page
+document.addEventListener('DOMContentLoaded', function() {
+    updateAuthUI();
+});
+
+function updateAuthUI() {
+    const userData = localStorage.getItem('saintUser');
+    const authContainer = document.getElementById('auth-buttons');
+    
+    if (!authContainer) return;
+    
+    if (userData) {
+        const user = JSON.parse(userData);
+        // User is logged in - show user info + logout
+        authContainer.innerHTML = `
+            <div class="user-nav">
+                <span>Welcome, ${user.name}</span>
+                <button onclick="logout()" class="btn-logout">Logout</button>
+            </div>
+        `;
+    } else {
+        // User not logged in - show Login/Register
+        authContainer.innerHTML = `
+            <a href="login.html" class="nav-link">Login</a>
+            <a href="register.html" class="btn-register">Register</a>
+        `;
+    }
+}
+
+function logout() {
+    localStorage.removeItem('saintUser');
+    window.location.reload(); // Refresh to update UI
+}
+
     <script src="js/main.js"></script>
     <script src="js/carousel.js"></script>
     <script src="js/orders.js"></script>
